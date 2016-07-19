@@ -1,8 +1,0 @@
-<nav>
-  <ol class="breadcrumb">
-    <li ng-repeat="crumb in vm.crumbs">
-      <a ng-if="!$last" ui-sref="{{ crumb.state }}">{{ crumb.title.title }}</a>
-      <span ng-if="$last" class="current">{{ crumb.title.title }}</span>
-    </li>
-  </ol>
-</nav>
