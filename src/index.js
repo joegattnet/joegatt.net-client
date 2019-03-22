@@ -1,37 +1,90 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { ApolloClient } from 'apollo-client';
+import { ApolloLink, Observable } from 'apollo-link';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from 'react-router-dom'
-import { createHttpLink } from 'apollo-link-http';
-import {
-  ApolloClient,
-  ApolloLink,
-  // HttpLink, - Exit Boost!!!
-  InMemoryCache,
-} from 'apollo-boost';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { onError } from 'apollo-link-error';
+import { withClientState } from 'apollo-link-state';
 
 import App from './App';
 
-const httpLink = createHttpLink({
-  credentials: 'same-origin',
-  uri: '/graphql',
+const cache = new InMemoryCache({
+  cacheRedirects: {
+    Query: {
+      movie: (_, { id }, { getCacheKey }) =>
+        getCacheKey({ __typename: 'Movie', id })
+    }
+  }
 });
 
-const authLink = new ApolloLink((operation, forward) => {
-  const token = localStorage.getItem('authToken');
+const request = async (operation) => {
+  const token = await localStorage.getItem('authToken');
   if (!!token) {
     operation.setContext({
       headers: {
-        Authorization: token ? `Bearer ${token}` : ''
+        Authorization: `Bearer ${token}`
       }
     });
   }
-  return forward(operation);
-});
+};
+
+const requestLink = new ApolloLink((operation, forward) =>
+  new Observable(observer => {
+    let handle;
+    Promise.resolve(operation)
+      .then(oper => request(oper))
+      .then(() => {
+        handle = forward(operation).subscribe({
+          next: observer.next.bind(observer),
+          error: observer.error.bind(observer),
+          complete: observer.complete.bind(observer),
+        });
+      })
+      .catch(observer.error.bind(observer));
+
+    return () => {
+      if (handle) handle.unsubscribe();
+    };
+  })
+);
 
 export const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  link: ApolloLink.from([
+    onError(({ graphQLErrors, networkError }) => {
+      if (graphQLErrors) {
+        console.log(graphQLErrors);
+        // sendToLoggingService(graphQLErrors);
+      }
+      if (networkError) {
+        console.log(networkError);
+        // logoutUser();
+      }
+    }),
+    requestLink,
+    withClientState({
+      defaults: {
+        isConnected: true
+      },
+      resolvers: {
+        Mutation: {
+          updateNetworkStatus: (_, { isConnected }, { cache }) => {
+            cache.writeData({ data: { isConnected }});
+            return null;
+          }
+        }
+      },
+      cache
+    }),
+    new HttpLink({
+      uri: '/graphql',
+      credentials: 'same-origin'
+    })
+  ]),
+  cache
 });
 
 ReactDOM.render(
