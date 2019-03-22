@@ -1,50 +1,40 @@
-import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo-hooks';
+import { UserContext } from '../helpers/UserContext';
 import gql from 'graphql-tag';
+import React from 'react';
 
-const ALL_VALID_TEXTS_QUERY = gql`
-  query AllValidCitationsQuery {
+const CITATIONS_QUERY = gql`
+  query CitationsQuery {
     citations {
       nodes {
         id
         cachedUrl
         cachedBlurbHtml
-        cachedSourceHtml
       }
     }
   }
 `;
 
-class Citations extends Component {
-
-  render() {
-    return (
-      <Query query={ALL_VALID_TEXTS_QUERY}>
-        {({ loading, error, data }) => {
-          if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
-          return (
-            <ul>
-              {data.citations.nodes.map((citation, index) => {
-                if (!citation.cachedUrl) {
-                  return null;
-                }
-                return (
-                  <li key={citation.id}>
-                    <Link to={citation.cachedUrl}>
-                      <p dangerouslySetInnerHTML={{ __html: citation.cachedBlurbHtml }} />
-                      <p dangerouslySetInnerHTML={{ __html: `&mdash; ${citation.cachedSourceHtml}` }} />
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          );
-        }}
-      </Query>
-    );
-  }
+export default () => {
+  const { loading, error, data, } = useQuery(CITATIONS_QUERY);
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  return (
+    <ul>
+      {data.citations.nodes.map((citation, index) => {
+        if (!citation.cachedUrl) {
+          return null;
+        }
+        return (
+          <li key={citation.id}>
+            <Link to={citation.cachedUrl}>
+              <p dangerouslySetInnerHTML={{ __html: citation.cachedBlurbHtml }} />
+              <p dangerouslySetInnerHTML={{ __html: `&mdash; ${citation.cachedSourceHtml}` }} />
+            </Link>
+          </li>
+        )
+      })}
+    </ul>
+  );
 }
-
-export default Citations;

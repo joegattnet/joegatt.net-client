@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink, Observable } from 'apollo-link';
 import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloProviderHooks } from 'react-apollo-hooks';
 import { BrowserRouter } from 'react-router-dom'
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -89,9 +90,11 @@ export const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ApolloProviderHooks client={client}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApolloProviderHooks>
   </ApolloProvider>,
   document.getElementById('root')
 );
