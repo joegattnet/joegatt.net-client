@@ -4,6 +4,8 @@ import { UserContext } from '../helpers/UserContext';
 import gql from 'graphql-tag';
 import React from 'react';
 
+import Text from '../components/Text';
+
 const TEXT_QUERY = gql`
   query TextsQuery($textId: Int) {
     text(uid: $textId) {
@@ -20,11 +22,11 @@ export default ({ match }) => {
   if (error) return `Error! ${error.message}`;
   console.log(data);
   return (
-    <section>
+    <Text>
       <header>
         <h1>{ data.text.title }</h1>
       </header>
-      <article dangerouslySetInnerHTML={{ __html: data.text.body }} />
-    </section>
+      <article id="body" dangerouslySetInnerHTML={{ __html: data.text.body }} />
+    </Text>
   );
 }
