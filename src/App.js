@@ -1,5 +1,11 @@
+import { Route, Switch } from 'react-router-dom';
 import React, { Component, } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
+
+import ArrowA from './components/ArrowA';
+import Footer from './components/Footer';
+// import Header from './components/Header';
+
 import Api from './pages/Api';
 import Citations from './pages/Citations';
 import Feature from './pages/Feature';
@@ -11,27 +17,40 @@ import Register from './pages/Register';
 import Tags from './pages/Tags';
 import Text from './pages/Text';
 import Texts from './pages/Texts';
+
 import { UserContextProvider, UserContext } from './helpers/UserContext';
+
+import {
+  CONTENT_COLUMNS_SPAN,
+  CONTENT_COLUMNS_START,
+  DESKTOP_BREAKPOINT,
+  LINE_HEIGHT,
+  PAGE_COLUMNS_SPAN,
+  TAB
+} from './config';
+
+const StyledPage = styled.div`
+  padding: 0 ${TAB} ${LINE_HEIGHT};
+
+  @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
+    display: grid;
+    grid-column-gap: ${TAB};
+    grid-template-columns: repeat(${PAGE_COLUMNS_SPAN}, 1fr);
+  }
+
+  #content {
+    grid-column-end: span ${CONTENT_COLUMNS_SPAN};
+    grid-column-start: ${CONTENT_COLUMNS_START};
+  }
+`;
 
 class App extends Component {
   render() {
     return (
-        <div className="App">
-          <UserContextProvider>
-            <footer className="App-header">
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/texts">Texts</Link></li>
-                <li><Link to="/citations">Citations</Link></li>
-                <li><Link to="/links">Links</Link></li>
-                <li><Link to="/tags">Tags</Link></li>
-                <li><Link to="/api">API</Link></li>
-              </ul>
-            </footer>
-            <hr />
-            <UserContext.Consumer>
-              {({user}) => user.signedIn? <LoginToolbar /> : <Login />}
-            </UserContext.Consumer>
+      <StyledPage className="App">
+        <UserContextProvider>
+          {/* <Header /> */}
+          <section id="content">
             <Switch>
               <Route path="/texts/:id" component={Text} />
               <Route exact path="/texts" component={Texts} />
@@ -44,8 +63,24 @@ class App extends Component {
               <Route exact path="/:feature" component={Feature} />
               <Route exact path="/" component={Home} />
             </Switch>
-          </UserContextProvider>
-        </div>
+          </section>
+          <Footer />
+          <hr />
+          {/* <footer className="App-header">
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/texts">Texts</Link></li>
+              <li><Link to="/citations">Citations</Link></li>
+              <li><Link to="/links">Links</Link></li>
+              <li><Link to="/tags">Tags</Link></li>
+              <li><Link to="/api">API</Link></li>
+            </ul>
+          </footer> */}
+          <UserContext.Consumer>
+            {({user}) => user.signedIn? <LoginToolbar /> : <Login />}
+          </UserContext.Consumer>
+        </UserContextProvider>
+      </StyledPage>
     );
   }
 }

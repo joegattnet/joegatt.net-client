@@ -10,12 +10,14 @@ import {
 } from '../config';
 
 const Text = styled.section`
+  background-color: violet;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto;
   grid-column-gap: ${TAB};
 
-  #body {
+  .body {
+    background-color: yellow;
     position: relative;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
@@ -39,6 +41,7 @@ const Text = styled.section`
     }
   }
   #annotations {
+    background-color: cyan;
     grid-row: 2 / span 1;
     &.side-annotations {
       grid-column: 2 / span 1;
