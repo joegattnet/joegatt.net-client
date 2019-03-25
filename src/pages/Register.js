@@ -19,9 +19,9 @@ class Register extends Component {
 
   render() {
     let firstNameInput,
-        lastNameInput,
-        emailInput,
-        passwordInput;
+      lastNameInput,
+      emailInput,
+      passwordInput;
 
     return (
       <Mutation mutation={REGISTER}>

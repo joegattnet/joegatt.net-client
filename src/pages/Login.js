@@ -16,7 +16,7 @@ class Login extends Component {
 
   render() {
     let emailInput,
-        passwordInput;
+      passwordInput;
 
     return (
       <Mutation
@@ -40,9 +40,8 @@ class Login extends Component {
                 lastName: parsedToken.last_name,
                 role: parsedToken.role,
                 userId: parsedToken.user_id,
-                }
               }
-            });
+            }});
             return (
               <div>
                 <UserContext.Consumer>
@@ -70,7 +69,7 @@ class Login extends Component {
                         }
                       }
                     }).then(response => <strong>LOGGEDIN</strong>)
-                    .catch(err => console.log('ERROR, err'));
+                      .catch(err => console.log('ERROR, err'));
                   }}
                 >
                   <input

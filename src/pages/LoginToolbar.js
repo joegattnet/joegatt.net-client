@@ -7,9 +7,9 @@ class LoginToolbar extends Component {
     return (
       <UserContext.Consumer>
         {({user, signOutUser}) => user.signedIn && <p>
-             <span>{user.name}</span>
-             | <Link to="#" onClick={() => signOutUser()}>Log out</Link>
-           </p>}
+          <span>{user.name}</span>
+          | <Link to="#" onClick={() => signOutUser()}>Log out</Link>
+        </p>}
       </UserContext.Consumer>
     );
   }

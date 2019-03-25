@@ -23,11 +23,10 @@ export default () => {
   return (
     <ul>
       {data.texts.nodes.map((text, index) => (
-          <li key={text.id}>
-            <Link to={text.cachedUrl} dangerouslySetInnerHTML={{ __html: text.cachedBlurbHtml }} />
-          </li>
-        )
-      )}
+        <li key={text.id}>
+          <Link to={text.cachedUrl} dangerouslySetInnerHTML={{ __html: text.cachedBlurbHtml }} />
+        </li>
+      ))}
     </ul>
   );
 }
