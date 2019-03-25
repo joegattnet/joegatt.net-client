@@ -7,7 +7,7 @@ import {
   TITLE_FONT_SIZE,
   TITLE_LINE_HEIGHT,
   WHITE,
-} from 'config';
+} from 'variables';
 
 // import { fontFace } from 'polished';
 

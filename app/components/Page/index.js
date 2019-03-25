@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DESKTOP_BREAKPOINT, LINE_HEIGHT, PAGE_COLUMNS_SPAN, TAB } from 'config';
+import { DESKTOP_BREAKPOINT, LINE_HEIGHT, PAGE_COLUMNS_SPAN, TAB } from 'variables';
 
 const Page = styled.div`
   padding: 0 ${TAB} ${LINE_HEIGHT};

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-import { TAB } from 'config';
+import { TAB } from 'variables';
 import ArrowA from 'components/ArrowA';
 
 const Li = styled.li`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TAB } from 'config';
+import { TAB } from 'variables';
 
 const ArrowA = styled.a`
   text-transform: lowercase;

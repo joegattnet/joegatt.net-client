@@ -7,7 +7,7 @@ import {
   FOOTER_LISTS_COLUMNS_SPAN,
   LINE_HEIGHT,
   QR_CODE_WIDTH,
-} from 'config';
+} from 'variables';
 import A from 'components/A';
 import ArrowA from 'components/ArrowA';
 import Wrapper from './Wrapper';

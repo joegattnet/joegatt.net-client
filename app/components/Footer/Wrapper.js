@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   CONTENT_COLUMNS_SPAN,
   CONTENT_COLUMNS_START,
-} from 'config';
+} from 'variables';
 
 const Wrapper = styled.footer`
   grid-column-start: ${CONTENT_COLUMNS_START};
