@@ -8,7 +8,7 @@ import {
   FOOTER_LISTS_COLUMNS_SPAN,
   LINE_HEIGHT,
   QR_CODE_WIDTH,
-} from '../config';
+} from '../variables';
 import ArrowA from './ArrowA';
 
 const Wrapper = styled.footer`

@@ -7,7 +7,7 @@ import {
   HALF_TAB,
   RED,
   TAB
-} from '../config';
+} from '../variables';
 
 const Text = styled.section`
   background-color: violet;

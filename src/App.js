@@ -27,7 +27,7 @@ import {
   LINE_HEIGHT,
   PAGE_COLUMNS_SPAN,
   TAB
-} from './config';
+} from './variables';
 
 const StyledPage = styled.div`
   padding: 0 ${TAB} ${LINE_HEIGHT};
