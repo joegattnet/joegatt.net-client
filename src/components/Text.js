@@ -10,14 +10,14 @@ import {
 } from '../variables';
 
 const Text = styled.section`
-  background-color: violet;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto;
   grid-column-gap: ${TAB};
 
   .body {
-    background-color: yellow;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
     position: relative;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
@@ -41,7 +41,9 @@ const Text = styled.section`
     }
   }
   #annotations {
-    background-color: cyan;
+    font-family: 'Roboto Slab', serif;
+    font-size: 14px;
+    font-weight: 300;
     grid-row: 2 / span 1;
     &.side-annotations {
       grid-column: 2 / span 1;

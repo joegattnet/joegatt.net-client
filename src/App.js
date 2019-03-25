@@ -30,6 +30,7 @@ import {
 } from './variables';
 
 const StyledPage = styled.div`
+  font-family: 'Roboto', sans-serif;
   padding: 0 ${TAB} ${LINE_HEIGHT};
 
   @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
