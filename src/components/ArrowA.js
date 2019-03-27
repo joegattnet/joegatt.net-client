@@ -1,14 +1,24 @@
 import styled from 'styled-components';
 import { TAB } from '../variables';
 
+import { ArrowRight2 as Arrow } from 'styled-icons/icomoon/ArrowRight2';
+
+const Arrow2 = styled(Arrow).attrs({ size: '2em' })`
+  position: absolute;
+  top: 0.5em;
+  right: 0.4em;
+  cursor: pointer;
+`;
+
 const ArrowA = styled.a`
+  background-image: ${Arrow};
   text-transform: lowercase;
   &:before {
     display: inline-block;
     font-family: 'Fontello';
     font-style: normal;
     font-weight: normal;
-    content: '\\e9ca';
+    content: ${Arrow};
     font-size: 0.85em;
     text-align: center;
     width: ${TAB};

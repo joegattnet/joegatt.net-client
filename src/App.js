@@ -1,3 +1,4 @@
+import { createGlobalStyle } from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
 import React, { Component, } from 'react';
 import styled from 'styled-components';
@@ -21,16 +22,61 @@ import Texts from './pages/Texts';
 import { UserContextProvider, UserContext } from './helpers/UserContext';
 
 import {
+  BLACK,
   CONTENT_COLUMNS_SPAN,
   CONTENT_COLUMNS_START,
   DESKTOP_BREAKPOINT,
   LINE_HEIGHT,
   PAGE_COLUMNS_SPAN,
-  TAB
+  RED,
+  SANS_FONT_SIZE,
+  TAB,
+  TITLE_FONT_SIZE,
+  TITLE_LINE_HEIGHT,
+  WHITE,
 } from './variables';
 
+const GlobalStyles = createGlobalStyle`
+  html,
+  body {
+    height: 100.1%;
+  }
+  body {
+    background-color: ${WHITE};
+    color: ${BLACK};
+    font-family: 'Lato', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: ${SANS_FONT_SIZE};
+    line-height: ${LINE_HEIGHT};
+  }
+  #app {
+    min-height: 100%;
+    min-width: 100%;
+  }
+  h2 {
+    color: ${RED};
+    font-size: ${TITLE_FONT_SIZE};
+    line-height: ${TITLE_LINE_HEIGHT};
+  }
+  h3 {
+    display: none;
+  }
+  a {
+    color: ${BLACK};
+    text-decoration: none;
+    &[href*=//]:hover {
+      color: blue;
+    }
+  }
+  ol,
+  ul {
+    list-style-type: none;
+  }
+`;
+
 const StyledPage = styled.div`
-  font-family: 'Roboto', sans-serif;
+  ${'' /* font-family: 'Roboto', sans-serif; */}
+  font-family: 'Lato', sans-serif;
   padding: 0 ${TAB} ${LINE_HEIGHT};
 
   @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
@@ -49,6 +95,7 @@ class App extends Component {
   render() {
     return (
       <StyledPage className="App">
+        <GlobalStyles />
         <UserContextProvider>
           {/* <Header /> */}
           <section id="content">

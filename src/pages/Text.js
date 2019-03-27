@@ -4,6 +4,7 @@ import { UserContext } from '../helpers/UserContext';
 import gql from 'graphql-tag';
 import React, { useEffect } from 'react';
 
+import Header from '../components/Header';
 import Text from '../components/Text';
 
 const TEXT_QUERY = gql`
@@ -23,9 +24,9 @@ export default ({ match }) => {
 
   return (
     <article>
-      <header>
+      <Header>
         <h1>{ data.text.title }</h1>
-      </header>
+      </Header>
       <Text>
         <section dangerouslySetInnerHTML={{ __html: data.text.cachedBodyHtml }} />
       </Text>

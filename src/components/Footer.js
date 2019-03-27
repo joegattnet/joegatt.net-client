@@ -9,7 +9,124 @@ import {
   LINE_HEIGHT,
   QR_CODE_WIDTH,
 } from '../variables';
+
+// https://styled-icons.js.org/
+
 import ArrowA from './ArrowA';
+
+import { ArrowRight } from 'styled-icons/typicons/ArrowRight';
+
+import {
+  CreativeCommons,
+  CreativeCommonsBy,
+  CreativeCommonsNc,
+  CreativeCommonsSa,
+  Evernote,
+  FacebookF,
+  Github,
+  Instagram,
+  MediumM,
+  Soundcloud,
+  Trello,
+  Twitter,
+  VimeoV,
+  Youtube,
+} from 'styled-icons/fa-brands';
+
+import { Envelope } from 'styled-icons/fa-regular/Envelope';
+import { Rss } from 'styled-icons/fa-solid/Rss';
+
+const Arrow = styled(ArrowRight).attrs({ size: '24px' })`
+  vertical-align: text-top;
+`;
+
+const CreativeCommonsIcon = styled(CreativeCommons).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const CreativeCommonsByIcon = styled(CreativeCommonsBy).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const CreativeCommonsNcIcon = styled(CreativeCommonsNc).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const CreativeCommonsSaIcon = styled(CreativeCommonsSa).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const EnvelopeIcon = styled(Envelope).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const EvernoteLogo = styled(Evernote).attrs({ size: '16px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const GithubLogo = styled(Github).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const FacebookLogo = styled(FacebookF).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const InstagramLogo = styled(Instagram).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const InstapaperLogo = styled.span`
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 700;
+  margin-right: 6px;
+  padding: 0 4px;
+  text-transform: uppercase;
+`;
+
+const MediumLogo = styled(MediumM).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const RssIcon = styled(Rss).attrs({ size: '14px' })`
+  vertical-align: -1;
+  margin-right: 6px;
+`;
+
+const SoundcloudLogo = styled(Soundcloud).attrs({ size: '18px' })`
+  vertical-align: top;
+  margin-right: 6px;
+`;
+
+const TrelloLogo = styled(Trello).attrs({ size: '16px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const TwitterLogo = styled(Twitter).attrs({ size: '14px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const VimeoLogo = styled(VimeoV).attrs({ size: '16px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
+
+const YoutubeLogo = styled(Youtube).attrs({ size: '16px' })`
+  vertical-align: -1px;
+  margin-right: 6px;
+`;
 
 const Wrapper = styled.footer`
   grid-column-start: ${CONTENT_COLUMNS_START};
@@ -18,12 +135,16 @@ const Wrapper = styled.footer`
 
 const Nav = styled.nav`
   margin: 0 0 ${LINE_HEIGHT} 0;
+  text-transform: lowercase;
   @media screen and (min-width: ${DESKTOP_BREAKPOINT}) {
     display: grid;
     grid-column-gap: ${LINE_HEIGHT};
     grid-template-columns: repeat(${CONTENT_COLUMNS_SPAN}, 1fr);
     margin: 0;
     width: 100%;
+  }
+  a {
+    position: relative;
   }
 `;
 
@@ -72,43 +193,48 @@ export default () => (
   <Wrapper>
     <Nav>
       <Promos>
-        <li><ArrowA href="/texts/378">The Reading Machine Revisited</ArrowA></li>
-        <li><ArrowA href="/texts/379">The Amanuensis</ArrowA></li>
-        <li><ArrowA href="/texts/164">The Reading Machine</ArrowA></li>
-        <li><ArrowA href="/texts/112">Packing My Library</ArrowA></li>
-        <li><ArrowA href="/pantography">Pantography</ArrowA></li>
-        <li><ArrowA href="/wutz">Jean Paul: Schulmeisterlein Wutz</ArrowA></li>
+        <li><a href="/texts/378"><Arrow />The Reading Machine Revisited</a></li>
+        <li><a href="/texts/379"><Arrow />The Amanuensis</a></li>
+        <li><a href="/texts/164"><Arrow />The Reading Machine</a></li>
+        <li><a href="/texts/112"><Arrow />Packing My Library</a></li>
+        <li><a href="/pantography"><Arrow />Pantography</a></li>
+        <li><a href="/wutz"><Arrow />Jean Paul: Schulmeisterlein Wutz</a></li>
       </Promos>
       <SectionLinks>
-        <li><ArrowA href="/">Home</ArrowA></li>
-        <li><ArrowA href="/texts">Texts</ArrowA></li>
-        <li><ArrowA href="/citations">Citations</ArrowA></li>
-        <li><ArrowA href="/links">Links</ArrowA></li>
-        <li><ArrowA href="/bibliography">Bibliography</ArrowA></li>
-        <li><ArrowA href="/tags">Tags</ArrowA></li>
-        <li><ArrowA href="/remix">Remix</ArrowA></li>
-        <li><ArrowA href="/privacy">Privacy</ArrowA></li>
-        <li><ArrowA href="/api">API</ArrowA></li>
-        <li><ArrowA href="/code">Code</ArrowA></li>
-        <li><ArrowA href="/colophon">Colophon</ArrowA></li>
-        <li><ArrowA href="mailto:joe@joegatt.net">joe@joegatt.net</ArrowA></li>
+        <li><a href="/"><Arrow />Home</a></li>
+        <li><a href="/texts"><Arrow />Texts</a></li>
+        <li><a href="/citations"><Arrow />Citations</a></li>
+        <li><a href="/links"><Arrow />Links</a></li>
+        <li><a href="/bibliography"><Arrow />Bibliography</a></li>
+        <li><a href="/tags"><Arrow />Tags</a></li>
+        <li><a href="/remix"><Arrow />Remix</a></li>
+        <li><a href="/privacy"><Arrow />Privacy</a></li>
+        <li><a href="/api"><Arrow />API</a></li>
+        <li><a href="/code"><Arrow />Code</a></li>
+        <li><a href="/colophon"><Arrow />Colophon</a></li>
+        <li><a href="mailto:joe@joegatt.net"><EnvelopeIcon />joe@joegatt.net</a></li>
       </SectionLinks>
       <ExternalLinks>
-        <li><ArrowA href="https://twitter.com/joegattnet">Twitter</ArrowA></li>
-        <li><ArrowA href="https://www.instagram.com/joegattnet/">Instagram</ArrowA></li>
-        <li><ArrowA href="https://facebook.com/joegattnet">Facebook</ArrowA></li>
-        <li><ArrowA href="https://youtube.com/joegatt0net">Youtube</ArrowA></li>
-        <li><ArrowA href="https://vimeo.com/joegattnet">Vimeo</ArrowA></li>
-        <li><ArrowA href="https://soundcloud.com/joegattnet">Soundcloud</ArrowA></li>
-        <li><ArrowA href="https://github.com/joegattnet">Github</ArrowA></li>
-        <li><ArrowA href="https://trello.com/joegattnet">Trello</ArrowA></li>
-        <li><ArrowA href="https://www.instapaper.com/p/joegattnet">Instapaper</ArrowA></li>
-        <li><ArrowA href="https://medium.com/@joegattnet">Medium</ArrowA></li>
-        <li><ArrowA href="https://www.evernote.com/pub/joegatt/joegatt.net">Evernote</ArrowA></li>
-        <li><ArrowA href="http://joegatt.net/texts.atom">Atom feed</ArrowA></li>
+        <li><a href="https://twitter.com/joegattnet"><TwitterLogo />Twitter</a></li>
+        <li><a href="https://www.instagram.com/joegattnet/"><InstagramLogo />Instagram</a></li>
+        <li><a href="https://facebook.com/joegattnet"><FacebookLogo />Facebook</a></li>
+        <li><a href="https://youtube.com/joegatt0net"><YoutubeLogo />Youtube</a></li>
+        <li><a href="https://vimeo.com/joegattnet"><VimeoLogo />Vimeo</a></li>
+        <li><a href="https://soundcloud.com/joegattnet"><SoundcloudLogo />Soundcloud</a></li>
+        <li><a href="https://github.com/joegattnet"><GithubLogo />Github</a></li>
+        <li><a href="https://trello.com/joegattnet"><TrelloLogo />Trello</a></li>
+        <li><a href="https://www.instapaper.com/p/joegattnet"><InstapaperLogo>I</InstapaperLogo>Instapaper</a></li>
+        <li><a href="https://medium.com/@joegattnet"><MediumLogo />Medium</a></li>
+        <li><a href="https://www.evernote.com/pub/joegatt/joegatt.net"><EvernoteLogo />Evernote</a></li>
+        <li><a href="http://joegatt.net/texts.atom"><RssIcon />Atom feed</a></li>
       </ExternalLinks>
     </Nav>
-    <small className="copyright">Except as otherwise stated, all content on <span>joegatt.net</span> is <span className="byline author vcard">by <a href="http://joegatt.net" className="fn">Joe Gatt</a></span> and licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence">CC BY-NC-SA 4.0</a>.</small>
+    <small className="copyright">
+      <CreativeCommonsIcon />
+      <CreativeCommonsByIcon />
+      <CreativeCommonsNcIcon />
+      <CreativeCommonsSaIcon />
+      Except as otherwise stated, all content on <span>joegatt.net</span> is <span className="byline author vcard">by <a href="http://joegatt.net" className="fn">Joe Gatt</a></span> and licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence">CC BY-NC-SA 4.0</a>.</small>
     <QrCodeImg className="qr_code" src="https://chart.googleapis.com/chart?chs=150x150&amp;cht=qr&amp;rnd=0.987998181888011&amp;chl=http://joegatt.net/" alt="QR code" />
   </Wrapper>
 );

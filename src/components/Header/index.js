@@ -17,7 +17,6 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
           <Breadcrumb href="/texts" title="Texts" />
           <Breadcrumb href="/texts/234" isLink={false} title="Text 234" />
         </Ol>
-        { this.props.children }
       </NavBar>
     );
   }

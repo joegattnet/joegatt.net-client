@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { CONTENT_COLUMNS_SPAN, CONTENT_COLUMNS_START } from 'variables';
+import { CONTENT_COLUMNS_START, CONTENT_COLUMNS_SPAN } from '../../variables';
 
-const Content = styled.section`
+export default styled.nav`
   grid-column-start: ${CONTENT_COLUMNS_START};
   grid-column-end: span ${CONTENT_COLUMNS_SPAN};
 `;
-
-export default Content;

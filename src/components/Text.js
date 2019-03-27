@@ -14,10 +14,10 @@ const Text = styled.section`
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: auto;
   grid-column-gap: ${TAB};
-
   .body {
+    ${'' /* font-family: 'Vollkorn', serif; */}
     font-family: 'Roboto Slab', serif;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
@@ -41,6 +41,7 @@ const Text = styled.section`
     }
   }
   #annotations {
+    ${'' /* font-family: 'Vollkorn', serif; */}
     font-family: 'Roboto Slab', serif;
     font-size: 14px;
     font-weight: 300;
@@ -75,7 +76,6 @@ const Text = styled.section`
   }
   #versions {
     ol {
-      background-color: yellow;
       padding: 0;
     }
     li {
